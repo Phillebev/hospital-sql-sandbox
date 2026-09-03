@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hospital.db — SQL Sandbox</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="vscode-dot red"></span><span class="vscode-dot yellow"></span><span class="vscode-dot green"></span>
+    <span class="topbar-title">hospital-sandbox — Visual Studio Code</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="activitybar">
+    <div class="activity-icon active" title="Explorer">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
+    </div>
+    <div class="activity-icon" title="Search">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5L20.49 19l-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+    </div>
+    <div class="activity-icon" title="Database">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2C7.58 2 4 3.34 4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5c0-1.66-3.58-3-8-3zm0 2c3.87 0 6 1.06 6 1.5S15.87 7 12 7s-6-1.06-6-1.5S8.13 4 12 4zM6 8.24c1.38.66 3.5 1.01 6 1.01s4.62-.35 6-1.01v3.51c-1.38.66-3.5 1.01-6 1.01s-4.62-.35-6-1.01V8.24zm0 5.75c1.38.66 3.5 1.01 6 1.01s4.62-.35 6-1.01v3.26c0 .44-2.13 1.5-6 1.5s-6-1.06-6-1.5v-3.26z"/></svg>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-header">EXPLORER</div>
+    <div class="sidebar-section">
+      <div class="section-title" id="db-root">
+        <svg class="chev" viewBox="0 0 16 16" width="16" height="16"><path fill="currentColor" d="M5.7 13.7L10.4 9 5.7 4.3l.7-.7L11.8 9l-5.4 5.4z"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="#75beff" d="M12 2C7.58 2 4 3.34 4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5c0-1.66-3.58-3-8-3z"/></svg>
+        HOSPITAL.DB
+      </div>
+      <div id="table-tree" class="tree"></div>
+    </div>
+    <div class="status-note" id="status-note">Laddar SQLite (WebAssembly)…</div>
+  </div>
+
+  <div class="main">
+    <div class="tabbar">
+      <div class="tab active">
+        <svg class="icon" viewBox="0 0 24 24" width="15" height="15"><path fill="#519aba" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 6V3.5L19.5 9H15a1 1 0 0 1-1-1z"/></svg>
+        query.sql
+      </div>
+      <button class="run-btn" id="run-btn" title="Kör (Cmd/Ctrl+Enter)">
+        <svg viewBox="0 0 16 16" width="13" height="13"><path fill="currentColor" d="M4 2l10 6-10 6V2z"/></svg>
+        Kör
+      </button>
+      <button class="reset-btn" id="reset-btn" title="Återställ databasen">↺ Reset DB</button>
+    </div>
+
+    <div class="editor-pane">
+      <textarea id="sql-input" class="editor" spellcheck="false">SELECT * FROM Patient;</textarea>
+    </div>
+
+    <div class="results-pane">
+      <div class="results-header">
+        <span>RESULTS</span>
+        <span id="results-meta" class="results-meta"></span>
+      </div>
+      <div class="results-body" id="results-body">
+        <div class="results-placeholder">Laddar databasmotorn…</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-panel">
+    <div class="preview-header" id="preview-header">KOLUMN-PREVIEW</div>
+    <div class="preview-body" id="preview-body">
+      <div class="results-placeholder">Klicka på en kolumn i trädet till vänster för att se dess data här.</div>
+    </div>
+  </div>
+</div>
+
+<div class="statusbar">
+  <span id="statusbar-text">● hospital.db — SQLite (WebAssembly, körs i din webbläsare)</span>
+  <span class="statusbar-right">UTF-8 · SQL</span>
+</div>
+
+<script src="vendor/sql-wasm.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
